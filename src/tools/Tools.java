@@ -1,6 +1,7 @@
 package tools;
 
 import game.Koma;
+import game.ShogiMove;
 import game.ShogiPiece;
 import javafx.scene.image.Image;
 
@@ -65,6 +66,58 @@ public abstract class Tools {
     public static Image getShogiImage(int ordinal) {
 
         return Objects.requireNonNull(getPiece(ordinal)).getImage();
+
+    }
+
+    public static int getValue(ShogiPiece sp) {
+        return getValue(sp.getOrd());
+    }
+
+    public static int getRowFor(int row, int dir, int pow, boolean turn) {
+
+        if (dir > 10)
+            return row + (turn ? -pow : pow);
+        else
+            switch (dir) {
+                case 0:
+                case 1:
+                case 2:
+                    return row + (turn ? pow : -pow);
+                case 5:
+                case 6:
+                case 7:
+                    return row + (turn ? -pow : pow);
+                default:
+                    return row;
+            }
+
+    }
+
+    public static int getRowFor(ShogiMove move, boolean turn) {
+        return getRowFor(move.getRow(), move.getDir(), move.getPow(), turn);
+    }
+
+    public static int getColFor(ShogiMove move, boolean turn) {
+        return getColFor(move.getCol(), move.getDir(), move.getPow(), turn);
+    }
+
+    public static int getColFor(int col, int dir, int pow, boolean turn) {
+
+        if (dir > 10)
+            return col + ((dir == 50 ? 1 : -1)) * (turn ? 1 : -1);
+        else
+            switch (dir) {
+                case 0:
+                case 3:
+                case 5:
+                    return col + (turn ? pow : -pow);
+                case 2:
+                case 4:
+                case 7:
+                    return col + (turn ? -pow : pow);
+                default:
+                    return col;
+            }
 
     }
 
