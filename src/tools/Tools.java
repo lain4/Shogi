@@ -49,7 +49,7 @@ public abstract class Tools {
             case 13:                        //TOKIN
                 return 12;
             case 14:                        //OSHO
-                return 255_255_255;
+                return 1_000_000_000;
             default:
                 return 0;
         }
