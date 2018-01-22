@@ -18,6 +18,7 @@ public abstract class Tools {
         return Math.abs(row - row2) <= 1 && Math.abs(col - col2) <= 1;
     }
 
+
     public static int getValue(int ordinal) {
         ordinal = Math.abs(ordinal);
 
