@@ -57,9 +57,9 @@ public abstract class Tools {
 
     }
 
-    public static int getOrigin(int ordinal) {
-        if (ordinal != 0)
-            return Objects.requireNonNull(getPiece(ordinal)).getOriOrd() * (ordinal > 0 ? 1 : -1);
+    public static int getOrigin(int piece) {
+        if (piece != 0)
+            return Objects.requireNonNull(getPiece(piece)).getOriOrd() * (piece > 0 ? 1 : -1);
         else
             return 0;
     }
